@@ -1,7 +1,7 @@
 let angle = 0;
 let verschieben = 0;
 let up = 0;
-let untergrenze = 50;
+let untergrenze = 40;
 let obergrenze = 0;
 var gui;
 var laenge = 0;
@@ -21,36 +21,34 @@ function setup() {
 
 function draw() {
   let s = second();
-  background(88 + s, 100, 80 - s * 1.8);
-
-
   let angle = map(mouseX, 0, windowWidth, -60, 60);
+
+  background(88 + s, 100, 80 - s * 1.8);
+  strokeWeight(3);
+
 
   if (mouseIsPressed) {
        MULTIPLY= (LIGHTEST);
-
    }else{
       MULTIPLY= (MULTIPLY);
    }
 
 
-  strokeWeight(3);
-
   if (up == 0) {
     if (verschieben < untergrenze) {
-      verschieben += 10;
+      verschieben += 8;
     } else {
       up = 1;
     }
-
   } else {
     if (verschieben > obergrenze) {
-      verschieben -= 10;
+      verschieben -= 8;
     } else {
       up = 0;
     }
   }
-  // console.log(verschieben);
+  console.log(verschieben);
+
   stroke(122, 100, 86, 80);
 
   for (let x = 1; x < width / 3; x += 10) {
@@ -66,9 +64,9 @@ function draw() {
 
       push();
       blendMode(MULTIPLY);
-      translate(x + 100, 30 * y + 30+ laenge);
+      translate(x + 100, 30 * y + 30+ laenge+verschieben);
       rotate(angle);
-      translate(-x - 100, -30 * y - 30- laenge);
+      translate(-x - 100, -30 * y - 30- laenge-verschieben);
       line(x + 100, 30 * y, x + 100, 30 * y + 30 + laenge);
       pop();
 
@@ -114,9 +112,9 @@ function draw() {
 
       push();
       blendMode(MULTIPLY);
-      translate(x + 530, 42 * y + 10+ laenge);
+      translate(x + 530, 42 * y + 10+ laenge+verschieben);
       rotate(angle);
-      translate(-x - 530, -42 * y - 10- laenge);
+      translate(-x - 530, -42 * y - 10- laenge-verschieben);
       line(x + 530, 42 * y, x + 530, 42 * y + 10 + laenge);
       pop();
 
@@ -162,25 +160,29 @@ function draw() {
 
       push();
       blendMode(MULTIPLY);
-      translate(x + 1200, 30 * y + 80+ laenge);
+      translate(x + 1200, 30 * y + 80+ laenge+verschieben);
       rotate(angle);
-      translate(-x - 1200, -30 * y - 80- laenge);
+      translate(-x - 1200, -30 * y - 80- laenge-verschieben);
       line(x + 1200, 30 * y, x + 1200, 30 * y + 80 + laenge);
       pop();
 
-      // push();
-      // blendMode(MULTIPLY);
-      // stroke(255,0,0);
-      // translate(x + 30, 10 * y + 10+verschieben);
-      // rotate(angle);
-      // translate(-x - 30, -10 * y - 10-verschieben);
-      // line(x + 30, 10*y, x + 30, 10*y + 10+laenge);
-      // pop();
-
-
-
     }
   }
+
+
+
+//
+//   push();
+//   for (let x = 1; x < width / 3; x += 10) {
+//   blendMode(MULTIPLY);
+//   stroke(255,0,0);
+//   translate(x + 150, 25 * y + 10+laenge+verschieben);
+//   rotate(angle);
+//   translate(-x - 150, -25 * y - 10-laenge-verschieben);
+//   line(x + 31500, 25*y, x + 150, 25*y + 10+laenge);
+// }
+//   pop();
+
 
 
 }
