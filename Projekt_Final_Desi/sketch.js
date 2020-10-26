@@ -1,7 +1,7 @@
 let angle = 0;
 let verschieben = 0;
 let up = 0;
-let untergrenze = 40;
+let untergrenze = 20;
 let obergrenze = 0;
 var gui;
 var laenge = 0;
@@ -22,32 +22,32 @@ function setup() {
 function draw() {
   let s = second();
   let angle = map(mouseX, 0, windowWidth, -60, 60);
-
-  background(88 + s, 100, 80 - s * 1.8);
+  blendMode(BLEND);
+  background(88 + s, 100, 80 - s * 1);
   strokeWeight(3);
 
 
-  if (mouseIsPressed) {
-       MULTIPLY= (LIGHTEST);
-   }else{
-      MULTIPLY= (MULTIPLY);
-   }
+  if (mouseIsPressed){
+      blendMode(LIGHTEST);
+    }else{
+      blendMode(MULTIPLY);
+    }
 
 
   if (up == 0) {
     if (verschieben < untergrenze) {
-      verschieben += 8;
+      verschieben += 3;
     } else {
       up = 1;
     }
   } else {
     if (verschieben > obergrenze) {
-      verschieben -= 8;
+      verschieben -= 3;
     } else {
       up = 0;
     }
   }
-  console.log(verschieben);
+  // console.log(verschieben);
 
   stroke(122, 100, 86, 80);
 
@@ -55,7 +55,6 @@ function draw() {
     for (let y = 1; y <= height; y += 10) {
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 30, 10 * y + 10+ laenge);
       rotate(angle);
       translate(-x - 30, -10 * y - 10- laenge);
@@ -63,15 +62,13 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
-      translate(x + 100, 30 * y + 30+ laenge+verschieben);
+      translate(x + 100, 30 * y + 30+ laenge);
       rotate(angle);
-      translate(-x - 100, -30 * y - 30- laenge-verschieben);
+      translate(-x - 100, -30 * y - 30- laenge);
       line(x + 100, 30 * y, x + 100, 30 * y + 30 + laenge);
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 180, 140 * y + 60+ laenge);
       rotate(angle);
       translate(-x - 180, -140 * y - 60- laenge);
@@ -79,7 +76,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x, 70 * y + 20+ laenge);
       rotate(angle);
       translate(-x, -70 * y - 20- laenge);
@@ -87,7 +83,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 570, 50 * y + 80+ laenge);
       rotate(angle);
       translate(-x - 570, -50 * y - 80- laenge);
@@ -95,7 +90,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 920, 10 * y + 30+ laenge);
       rotate(angle);
       translate(-x - 920, -10 * y - 30- laenge);
@@ -103,7 +97,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 720, 140 * y + 50+ laenge);
       rotate(angle);
       translate(-x - 720, -140 * y - 50- laenge);
@@ -111,15 +104,13 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
-      translate(x + 530, 42 * y + 10+ laenge+verschieben);
+      translate(x + 530, 42 * y + 10+ laenge);
       rotate(angle);
-      translate(-x - 530, -42 * y - 10- laenge-verschieben);
+      translate(-x - 530, -42 * y - 10- laenge);
       line(x + 530, 42 * y, x + 530, 42 * y + 10 + laenge);
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 510, 210 * y + 50+ laenge);
       rotate(angle);
       translate(-x - 510, -210 * y - 50- laenge);
@@ -127,7 +118,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 510, 510 * y + 50+ laenge);
       rotate(angle);
       translate(-x - 510, -510 * y - 50- laenge);
@@ -135,7 +125,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 450, 700 * y + 80+ laenge);
       rotate(angle);
       translate(-x - 450, -700 * y - 80- laenge);
@@ -143,7 +132,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x, 32 * y + 40+ laenge- laenge);
       rotate(angle);
       translate(-x, -32 * y - 40);
@@ -151,7 +139,6 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
       translate(x + 850, 32 * y + 10+ laenge);
       rotate(angle);
       translate(-x - 850, -32 * y - 10- laenge);
@@ -159,29 +146,14 @@ function draw() {
       pop();
 
       push();
-      blendMode(MULTIPLY);
-      translate(x + 1200, 30 * y + 80+ laenge+verschieben);
+      translate(x + 1200, 30 * y + 80+ laenge);
       rotate(angle);
-      translate(-x - 1200, -30 * y - 80- laenge-verschieben);
+      translate(-x - 1200, -30 * y - 80- laenge);
       line(x + 1200, 30 * y, x + 1200, 30 * y + 80 + laenge);
       pop();
-
     }
   }
 
-
-
-//
-//   push();
-//   for (let x = 1; x < width / 3; x += 10) {
-//   blendMode(MULTIPLY);
-//   stroke(255,0,0);
-//   translate(x + 150, 25 * y + 10+laenge+verschieben);
-//   rotate(angle);
-//   translate(-x - 150, -25 * y - 10-laenge-verschieben);
-//   line(x + 31500, 25*y, x + 150, 25*y + 10+laenge);
-// }
-//   pop();
 
 
 
