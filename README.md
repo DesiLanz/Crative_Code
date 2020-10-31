@@ -2,4 +2,4 @@
 
 ## Moodboard zum Thema Wind 
 
-![Moodboard](../Moodboard_wetter_desi.png)
+![Moodboard](Moodboard_wetter_desi.png)
