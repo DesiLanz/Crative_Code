@@ -34,20 +34,6 @@ function draw() {
   }
 
 
-  if (up == 0) {
-    if (verschieben < untergrenze) {
-      verschieben += 3;
-    } else {
-      up = 1;
-    }
-  } else {
-    if (verschieben > obergrenze) {
-      verschieben -= 3;
-    } else {
-      up = 0;
-    }
-  }
-  // console.log(verschieben);
 
   stroke(122, 100, 86, 80);
 
